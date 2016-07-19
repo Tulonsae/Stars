@@ -1,0 +1,127 @@
+Information for stars.hygxyz
+============================
+
+Description
+-----------
+This database table uses the hygxyz.csv data file from David Nash/astronexus
+and puts it into a table named "hygxyz". Note that this data file does not
+contain all the fields in the full HYG database.
+
+The HYG database (v3.0) is a compilation of stellar data from a variety of
+catalogs. It contains all stars in Hipparcos, Yale Bright Star, and Gliese
+catalogs (almost 120k stars). The HYG name comes from the first letters of
+Hipparcos, Yale, and Gliese. In addition, some values in the hygxyz.csv data
+file were calculated by David Nash. See http://www.astronexus.com/hyg for
+more information.
+
+Note: the description on the website (and github) has the wrong order for
+the ProperName. It is between BayerFlamsteed and RA, not after Dec. The csv
+file lists the fields in the first line.
+
+Files
+-----
+Info.txt		this file
+HYG-README.txt		renamed copy of HYG README.md from Source
+schema.sql		schema file for table, see Schema below
+create-input-sql.awk	awk script - converts data into input sql
+
+External Files
+--------------
+hygxyz.csv		HYG xyz data file, see Data below
+input.sql		input sql containing all data in hygxzy.csv
+
+Instructions
+------------
+From Source:
+  To get the hygxyz.csv file
+     goto https://github.com/astronexus/HYG-Databases
+     download hygxyz.csv
+  To create the input.sql
+     tail -n +2 hygxyz.csv | awk -f create-input-sql.awk > input.sql
+From Tulonsae:
+  To get the External Files
+     curl -O https://tulonsae.org/hygxyz/hygxyz.csv.gz \
+          -O https://tulonsae.org/hygxyz/input.sql.gz
+     gunzip hygxyz.gz input.sql.gz
+
+Source
+------
+From: David Nash (aka astronexus), www.astronexus.com
+Location: https://github.com/astronexus/HYG-Database
+Date Retrieved: 13-Jul-2016
+Files Retrieved: hygxyz.csv
+Other Links:
+  HYG Database webpage:
+    http://www.astronexus.com/hyg
+
+Data:
+-----
+  StarID - HYG ID
+  HIP - Hipparcos Catalog ID
+  HD - Henry Draper Catalog ID
+  HR - Harvard Revised Catalog ID (same as in Yale Bright Star Catalog)
+  Gliese - Gliese Catalog ID, from 3rd edition
+  BayerFlamsteed - from Yale Bright Catalog, 5th edition, combines:
+    Flamsteed number (if present)
+    Bayer Greek letter
+    Bayer superscript number (if present)
+    constellation abbrieviation
+  ProperName - the common name, mostly from Hipparcos website, about 100
+  RA - right ascension, epoch 2000.0, in hms (converted to decimal) [1]
+  Dec - declination, epoch 2000.0, in hms (converted to decimal) [1]
+  Distance - distance in parsecs [2]
+  PMRA - proper motion in right ascension, milliarcseconds per year
+  PMDec - proper motion in declination, milliarcseconds per year
+  RV - radial velocity, km/sec (where known)
+  Mag - apparent visual magnitude
+  AbsMag - absolute visual magnitude [3]
+  Spectrum - spectral type, if known
+  ColorIndex - color index (blue magnitude - visual magnitude), if known
+  X - X Cartesian coordinate, in parsecs [4]
+  Y - Y Cartesian coordinate, in parsecs [4]
+  Z - Z Cartesian coordinate, in parsecs [4]
+  VX - X Cartesian velocity coordinate, in parsecs/year [5]
+  VY - Y Cartesian velocity coordinate, in parsecs/year [5]
+  VZ - Z Cartesian velocity coordinate, in parsecs/year [5]
+Notes:
+  [1] Stars only in Gliese, which uses 1950.0 epoch had RA and Dec precessed
+      to 2000.
+  [2] For distance, a value of 10000000 indicates missing or dubious (e.g.,
+      negative) parallax data in the Hipparcos catalog.
+  [3] Absolute visual magnitude is the apparent magnitude from a distance of
+      10 parsecs.
+  [4] The Cartesian coordinates are based on the equatorial coordinates as
+      seen from Earth, +X is in the direction of the vernal equinox (at epoch
+      2000), +Z towards the north celestial pol, and +Y in the direction of
+      R.A. 6 hours, declination 0 degrees.
+  [5] Uses the same coordinate system described in Note [4]. The velocity
+      components are determine from the proper motion and the raidal velocity
+      (where known).
+
+Schema:
+-------
+Table name: hygxyz
+  ID		unsigned int*	from StarID field, primary key
+  HIP		unsigned int	from HIP field
+  HD		unsigned int	from HD field
+  HR		unsigned int	from HR field
+  Gliese	varchar(16)	from Gliese field
+  BF		varchar(16)	from BayerFlamsteed field
+  Name		varchar(64)	from ProperName field
+  RA		float		from RA field
+  Decl		float		from Dec field
+  Distance	float		from Distance field
+  PMRA		float		from PMRA field
+  PMDec		float		from PMDec field
+  RV		float		from RV field
+  Mag		float		from Mag field
+  AbsMag	float		from AbsMag field
+  Spectrum	varchar(16)	from Spectrum field
+  BV		float		from ColorIndex field
+  X		float		from X field
+  Y		float		from Y field
+  Z		float		from Z field
+  VX		float		from VX field
+  VY		float		from VY field
+  VZ		float		from VZ field
+Note: * Indicates NOT NULL, otherwise DEFAULT NULL.
