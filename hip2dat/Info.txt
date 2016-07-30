@@ -55,14 +55,14 @@ Data:
   Nc - Number of components
   RArad - right ascension in IRCS, epoch 1991.25, in radians
   DErad - declination in IRCS, epoch 1991.25, in radians
-  Plx - parallax, in mas
-  pmRA - proper motion in right ascension, mas per year
-  pmDE - proper motion in declination, mas per year
-  e_RArad - formal error on RArad, in mas
-  e_DErad - formal error on DErad, in mas
-  e_Plx - formal error on Plx, in mas
-  e_pmRA - formal error on pmRA, in mas per year
-  e_pmDE - formal error on pmDE, in mas per year
+  Plx - parallax, in millisecond of arc
+  pmRA - proper motion in right ascension, millisecond of arc per year
+  pmDE - proper motion in declination, millisecond of arc per year
+  e_RArad - formal error on RArad, in millisecond of arc
+  e_DErad - formal error on DErad, in millisecond of arc
+  e_Plx - formal error on Plx, in millisecond of arc
+  e_pmRA - formal error on pmRA, in millisecond of arc per year
+  e_pmDE - formal error on pmDE, in millisecond of arc per year
   Ntr - number of field transits used
   F2 - goodness of fit
   F1 - percentage of rejected data, in percent
