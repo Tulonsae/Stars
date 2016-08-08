@@ -42,7 +42,7 @@ From Tulonsae:
   To get the External Files
      curl -O https://tulonsae.org/hygxyz/hygxyz.csv.gz \
           -O https://tulonsae.org/hygxyz/input.sql.gz
-     gunzip hygxyz.gz input.sql.gz
+     gunzip hygxyz.csv.gz input.sql.gz
 
 Source
 ------
