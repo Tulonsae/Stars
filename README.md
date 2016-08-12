@@ -29,6 +29,12 @@ This table uses the hip2.dat data file of the Hipparcos-2 catalog from the
 VizieR archives. The data is a new reduction, published in 2007, of the
 astrometric data produced by the Hipparcos mission.
 
+cdstars Table
+-------------
+This table uses information from Chris Dolan's list of stars in Bright Star
+Catlog order. (The data his website has been put into a tsv file.) The main
+purpose his list is included in this project is for the star names.
+
 IP Notes
 --------
 This project contains mixed content from a variety of sources.
