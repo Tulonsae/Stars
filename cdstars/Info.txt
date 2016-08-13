@@ -63,13 +63,13 @@ Schema:
 -------
 Table name: cdstars
   Name		varchar(32)*	from Name field
-  Meaning	varchar(64)	from Meaning field
+  Meaning	varchar(65)	from Meaning field
   AltNames	varchar(128)	from OtherNames field
   Desg		varchar(32)*	from Designation field
   HR		unsigned int*	from HR field, primary key
   HD		unsigned int*	from HD field
   RA		varchar(10)*	from RA field (format: nn nn nn.n)
-  Decl		varchar(8)*	from Dec field (format: snn nn nn)
+  Decl		varchar(9)*	from Dec field (format: snn nn nn)
   V		float*		from V field
   BV		float		from B-V field
   Spectrum	varchar(24)*	from Spectrum field
