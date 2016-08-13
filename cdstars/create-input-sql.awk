@@ -1,5 +1,6 @@
 BEGIN {
    FS = "	"
+   printf "SET NAMES utf8;\n"
 }
 
 {
