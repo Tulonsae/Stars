@@ -12,4 +12,4 @@ CREATE TABLE `cdstars` (
   `Spectrum` varchar(24) NOT NULL,
   `Comments` varchar(720) DEFAULT NULL,
   PRIMARY KEY (`HR`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
