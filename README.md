@@ -21,7 +21,7 @@ wgsn Table
 ----------
 This table uses the text data file, containing approved standardized proper
 names for stars, from the IAU WGSN. This Working Group was organized in 2016.
-As of June 30, 2016, the list contains 58 stars.
+As of July 20, 2016, the list contains 125 stars.
 
 hip2dat Table
 -------------
@@ -32,8 +32,8 @@ astrometric data produced by the Hipparcos mission.
 cdstars Table
 -------------
 This table uses information from Chris Dolan's list of stars in Bright Star
-Catlog order. (The data his website has been put into a tsv file.) The main
-purpose his list is included in this project is for the star names.
+Catlog order. (The data his website has been put into a tsv file.) This list
+is mostly included in the Stars Project for the star names.
 
 IP Notes
 --------
