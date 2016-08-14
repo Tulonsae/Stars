@@ -8,7 +8,7 @@ the International Astronomical Union (IAU) organized the Working Group on Star
 Names (WGSN), consisting of an international group of astronomers, to catalog
 and standardize proper names for stars for the international astronomical
 community. Please see their Terms of Reference webpage (see Other Links below,
-under Location) for more info. As of June 30, 2016, the list contains 58 stars.
+under Location) for more info. As of July 20, 2016, the list contains 125 stars.
 
 Files
 -----
@@ -18,7 +18,7 @@ create-input-sql.awk	awk script - converts data into input sql
 
 External Files
 --------------
-30-Jun-16_IAU-CSN.txt	Renamed copy of IAU-CSN.txt data file, see Data below
+20-Jul-16_IAU-CSN.txt	Renamed copy of IAU-CSN.txt data file, see Data below
 input.sql		input sql containing all data in current IAU-CSN.txt
 
 Instructions
@@ -27,18 +27,18 @@ From Source:
   To get the IAU-CSN.txt file
      curl -O http://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt
   To create the input.sql
-     tail -n +5 IAU-CSN.txt | awk -f create-input-sql.awk > input.sql
+     tail -n +16 IAU-CSN.txt | awk -f create-input-sql.awk > input_20-Jul-16.sql
 From Tulonsae:
   To get the External Files
-     curl -O https://tulonsae.org/wgsn/30-Jun-16_IAU-CSN.txt \
-          -O https://tulonsae.org/wgsn/input.sql
+     curl -O https://tulonsae.org/wgsn/20-Jul-16_IAU-CSN.txt \
+          -O https://tulonsae.org/wgsn/input_20-Jul-16.sql
 
 Source
 ------
 From: IAU Catalog of Star Names (IAU-CSN)
       IAU Division C Working Group on Star Names (WGSN)
 Location: http://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt
-Date Retrieved: 17-Jul-2016
+Date Retrieved: 13-Aug-2016
 Files Retrieved: IAU-CSN.txt
 Other Links:
   The WGN webpage on the IAU site:
@@ -54,25 +54,25 @@ Data:
   Designation - cat code + its cat ID, usually HR (Harvard Revised)
   RA(J2000) - Right Ascension, J2000, in degrees (converted to decimal)
   Dec(J2000) - Declination, J2000, in degrees (converted to decimal)
-  Approved - date (mm/d/yy)
   Vmag - apparent visual magnitude
   ID - ??, 3-letter Greek and/or 2-digit number, if known
   Con - constellation
   HIP# - Hipparcos Catalog ID
   HD# - Henry Draper Catalog ID
+  Approved - date (yyyy-mm-dd)
 
 Schema:
 -------
 Table name: wgsn
-  Name		varchar(16)*	from Name field
-  Desg		varchar(16)*	from Designation field
-  RA		float*		from RA(J2000) field
-  Decl		float*		from Dec(J2000) field
-  Approved	date*		from Approved field, converted to yyyy-mm-dd
-  Vmag		float		from Vmag field
-  ID		varchar(8)	from ID field
-  Con		varchar(8)	from Con field
-  HIP		unsigned int	from HIP# field
-  HD		unsigned int	from HD# field
-  HR		unsigned int	from Designation field, only if cat code HR
+  Name		varchar(16)*		from Name field
+  Desg		varchar(13)*		from Designation field
+  RA		decimal(9,6)*		from RA(J2000) field
+  Decl		decimal(8,6)*		from Dec(J2000) field
+  Vmag		decimal(3,2)		from Vmag field
+  ID		varchar(5)		from ID field
+  Con		char(3)			from Con field
+  HIP		unsigned mediumint	from HIP# field
+  HD		unsigned mediumint	from HD# field
+  HR		unsigned smallint	from Designation field, if cat code HR
+  Approved	date*			from Approved field
 Note: * Indicates NOT NULL, otherwise DEFAULT NULL.

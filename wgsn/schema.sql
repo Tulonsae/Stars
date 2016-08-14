@@ -1,13 +1,13 @@
 CREATE TABLE `wgsn` (
   `Name` varchar(16) NOT NULL,
-  `Desg` varchar(16) NOT NULL,
-  `RA` float NOT NULL,
-  `Decl` float NOT NULL,
-  `Approved` date NOT NULL,
-  `Vmag` float DEFAULT NULL,
-  `ID` varchar(8) DEFAULT NULL,
-  `Con` varchar(8) DEFAULT NULL,
-  `HIP` int(10) unsigned DEFAULT NULL,
-  `HD` int(10) unsigned DEFAULT NULL,
-  `HR` int(10) unsigned DEFAULT NULL
-);
+  `Desg` varchar(13) NOT NULL,
+  `RA` decimal(9,6) NOT NULL,
+  `Decl` decimal(8,6) NOT NULL,
+  `Vmag` decimal(3,2) DEFAULT NULL,
+  `ID` varchar(5) DEFAULT NULL,
+  `Con` char(3) DEFAULT NULL,
+  `HIP` mediumint unsigned DEFAULT NULL,
+  `HD` mediumint unsigned DEFAULT NULL,
+  `HR` smallint unsigned DEFAULT NULL,
+  `Approved` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
