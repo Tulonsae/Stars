@@ -9,40 +9,50 @@ the external data files or the generated input sql scripts. These are available
 on the Internet and the instructions/locations are noted within the Info.txt
 file for each table.
 
-hygxyz Table
-------------
-This table uses the hygxyz.csv data file of the HYG Database from David Nash
-(astronexus). The data is a compilation of stellar data (almost 120k stars)
-from a variety of catalogs. In particular, it has a computed set of Cartesian
-coordinates for each star, along with other useful data. See the Info.txt file
-within the folder for more information.
+idmaps
+------
+This directory contains information for various ID mapping tables (hip-hd).
+See its Info.txt file for details.
 
-wgsn Table
-----------
-This table uses the text data file, containing approved standardized proper
-names for stars, from the IAU WGSN. This Working Group was organized in 2016.
-As of July 20, 2016, the list contains 125 stars.
+bsc5dat
+-------
+This directory contains the information for the bsc5dat table. The bsc5dat table
+uses the catalog data file of the Yale Bright Star Catalog (aka Harvard Revised)
+from the VizieR archives. The data is from the 5th Revised Ed, published in
+1991.
 
-hip2dat Table
--------------
-This table uses the hip2.dat data file of the Hipparcos-2 catalog from the
-VizieR archives. The data is a new reduction, published in 2007, of the
-astrometric data produced by the Hipparcos mission.
+cdstars
+-------
+This directory contains the information for the cdstars table. The cdstars table
+uses information from Chris Dolan's list of stars in Bright Star Catlog order.
+(The data his website has been put into a tsv file.) This list is mostly
+included in the Stars Project for the star names.
 
-cdstars Table
--------------
-This table uses information from Chris Dolan's list of stars in Bright Star
-Catlog order. (The data his website has been put into a tsv file.) This list
-is mostly included in the Stars Project for the star names.
+hip2dat
+-------
+This directory contains the information for the hip2dat table. The hip2dat table
+uses the hip2.dat data file of the Hipparcos-2 catalog from the VizieR archives.
+The data is a new reduction, published in 2007, of the astrometric data produced
+by the Hipparcos mission.
 
-bsc5dat Table
--------------
-This table uses the catalog data file of the Yale Bright Star Catalog (aka
-Harvard Revised) from the VizieR archives. The data is from the 5th Revised Ed,
-published in 1991.
+hygxyz
+------
+This directory contains the information for the hygxyz table. The hygxyz table
+uses the hygxyz.csv data file of the HYG Database from David Nash (astronexus).
+The data is a compilation of stellar data (almost 120k stars) from a variety of
+catalogs. In particular, it has a computed set of Cartesian coordinates for each
+star, along with other useful data. See the Info.txt file within the folder for
+more information.
 
-IP Notes
---------
+wgsn
+----
+This directory contains the information for the wgsn table. The wgsn table uses
+the text data file, containing approved standardized proper names for stars,
+from the IAU WGSN. This Working Group was organized in 2016. As of July 20,
+2016, the list contains 125 stars.
+
+Intellectual Property Notes
+---------------------------
 This project contains mixed content from a variety of sources.
 
 Data and content from other sources is listed in the Info.txt file in each
