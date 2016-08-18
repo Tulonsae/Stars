@@ -1,0 +1,224 @@
+Information for stars.bsc5dat
+=============================
+
+Description
+-----------
+This database table uses the data file from the 5th Revised Edition of the
+Bright Star Catalog (BSC) and puts it into a table named "bsc5dat". This
+catalog is also known as "Yale Bright Star Catalog" or "Harvard Revised".
+
+The BSC is widely used for stars brighter than magnitude 6.5. This revision
+of the catalog was published in 1991. It contains 9110 objects, of which 9096
+are stars. In addition to the data file, there is an extensive remarks file
+that gives more detailed information on individual entries.
+
+Note: In the Stars Database, see the bsc5notes table for the remarks (aka
+notes) data.
+
+Files
+-----
+Info.txt		this file
+BSC5-ReadMe		renamed copy of BSC5 ReadMe from Source
+schema.sql		schema file for table, see Schema below
+create-input-sql.awk	awk script - converts data into input sql
+chkdata			directory containing some useful awk scripts
+
+External Files
+--------------
+catalog			BSC main data file, see Data below
+input.sql		input sql containing all data in catalog
+
+Instructions
+------------
+From Source:
+  To get the catalog file
+     curl -O ftp://cdsarc.u-strasbg.fr/cats/V/50/catalog.gz
+     gunzip catalog.gz
+  To create the input.sql
+     awk -f create-input-sql.awk < catalog > input.sql
+From Tulonsae:
+  To get the External Files
+     curl -O https://tulonsae.org/bsc5dat/catalog.gz \
+          -O https://tulonsae.org/bsc5dat/input.sql.gz
+     gunzip catalog.gz input.sql.gz
+
+TOHERE
+
+Source
+------
+From: The VizieR archives, hosted by CDS - Strasbourg
+Location: ftp://cdsarc.u-strasbg.fr/cats/V/50/
+Date Retrieved: 13-Aug-2016
+Files Retrieved: ReadMe, catalog
+Other Links:
+  Yale Bright Star Catalog webpage:
+    http://tdc-www.harvard.edu/catalogs/bsc5.html
+  Other documentation at HEASARC Archive (NASA)
+    http://heasarc.gsfc.nasa.gov/W3Browse/star-catalog/bsc5p.html
+
+Data:
+-----
+  HR - Harvard Revised Number = Bright Star Number
+  Name - name, usually Bayer and/or Flamsteed
+  DM - Durchmusterung Id
+  HD - Henry Draper Catalog ID
+  SAO - SAO Catalog ID
+  FK5 - FK5 star number
+  IRflag - I if infrared source
+  r_IRflag - reference code for infrared source [2]
+  Multiple - double or multiple-star code [3]
+  ADS - Aitken's Double Star Catalog (ADS) designation [12]
+  VarID - variable star identification
+  RAh1900 - hours of right ascension, epoch 1900.0 [1]
+  RAm1900 - minutes of right ascension, epoch 1900.0 [1]
+  RAs1900 - seconds of right ascension, epoch 1900.0, converted to decimal [1]
+  DE-1900 - sign of declination, epoch 1900.0 [1]
+  DEd1900 - degrees of declination, epoch 1900.0 [1]
+  DEm1900 - minutes of declination, epoch 1900.0, in arcmin [1]
+  DEs1900 - seconds of declination, epoch 1900.0, in arcsec [1]
+  RAh - hours of right ascension, epoch 2000.0 [1]
+  RAm - minutes of right ascension, epoch 2000.0 [1]
+  RAs - seconds of right ascension, epoch 2000.0, converted to decimal [1]
+  DE- - sign of declination, epoch 2000.0 [1]
+  DEd - degrees of declination, epoch 2000.0 [1]
+  DEm - minutes of declination, epoch 2000.0, in arcmin [1]
+  DEs - seconds of declination, epoch 2000.0, in arcsec [1]
+  GLON - galactic longitude, in degrees [1]
+  GLAT - galactic latitdue, in degrees [1]
+  Vmag - visual magnitude [1]
+  n_Vmag - visual magnitude code [4]
+  u_Vmag - uncertainty flag on visual magnitude [5]
+  B-V - color in the UBV system (aka color index), mag
+  u_B-V - uncertainty flag on B-V [5]
+  U-B - color in th UBV system, mag
+  u_U-B - uncertainty flag on U-B [5] [13]
+  R-I - R-I in the system specified by n_R-I, mag
+  n_R-I - code for R-I [6] [14]
+  SpType - spectral type
+  n_SpType - code for spectral type [7] [15]
+  pmRA - annual proper motion in RA J2000.0, arcsecond per year, FK5 system [8]
+  pmDE - annual proper motion in Dec J2000.0, arcsecond per year, FK5 system
+  n_Parallax - code for parallax type [9]
+  Parallax - parallax, in arcsec, type indicated by n_Parallax
+  RadVel - heliocentric radial velocity, in km/s
+  n_RadVel - comments on radial velocity [10]
+  l_RotVel - rotational velocity limit characters [11] [16]
+  RotVel - rotational velocity, v sin i, in km/s
+  Dmag - magnitude of difference of double or brightest multiple, mag
+  Sep - separation of components in Dmag (if occultation binary), in arcsec
+  MultID - identifications of components in Dmag
+  MultCnt - number of components assigned to a multiple
+  NoteFlag - an asterisk (*) indicates an entry in the BCS Notes data file
+  
+Notes:
+(Only some of the information in these notes are from the ReadMe.)
+  [0] Not all records have data after column 160 (after pmDE).
+  [1] These fields are blank for star removed from BCS (see BCS Notes data).
+      14 stars are removed, these are: 92, 95, 182, 1057, 1841, 2472, 2496,
+      3515, 3671, 6309, 6515, 7189, 7539, 8296
+  [2] Infrared Source Code:
+      blank if from NASA merged Infrared Catalogue, Schmitz et al., 1978
+      ' if from Engles et al. 1982
+      : if uncertain identification
+  [3] Multiple Code:
+      A = Astrometric binary
+      D = Duplicity discovered by occultation
+      I = Innes, Southern Double Star Catalogue (1927)
+      R = Rossiter, Michigan Publ. 9, 1955
+      S = Duplicity discovered by speckle interferometry
+      W = Worley (1978) update of the IDS
+  [4] Visual Magnitude Code:
+      blank = V on UBV Johnson system
+      R = HR magnitudes reduced to the UBV system
+      H = original HR magnitude
+  [5] Uncertainty Flag Code is a blank, colon (:) or question mark (?).
+      No information in ReadMe on what this means.
+  [6] R-I System Code
+      C = Cousin
+      E = Eggen
+      : is not specified by ReadMe
+      ? is not specified by ReadMe
+      D is not specified by ReadMe
+  [7] Spectral Type Code is an e, v or t.
+      No information in ReadMe on what this means.
+  [8] As usually assumed, the proper motion in RA is the projected motion
+      (cos(DE).d(RA)/dt), i.e. the total proper motion is sqrt(pmRA^2^+pmDE^2^)
+  [9] Parallax Type Code
+      blank if trigonometric parallax
+      D if dynamical parallax
+ [10] Radial Velocity Comments
+      V  = variable radial velocity
+      V? = suspected variable radial velocity
+      SB, SB1, SB2, SB3 = spectroscopic binaries, single, double or triple
+        lined spectra
+      O = orbital data available
+ [11] Rotational Velocity Limit Characters.
+      The ReadME specificies this as a 2 character field which can have the
+      following characters: < = > or blank. However, the data contains only
+      blanks or =<
+ [12] The data is actually numeric, not alphanumeric as implied in the ReadMe.
+ [13] HR 966 has u_U-B code without having a U-B value. Possibly this code
+      refers to the B-V value?
+ [14] n_R-I may contain a blank (even when R-I has a value). None of the values
+      in this field are a D
+ [15] n_SpType may contain a blank (even when SpType has a value).
+ [16] This field only contains "<" or "=<".
+
+
+Schema:
+-------
+Table name: bsc5dat
+  HR		unsigned smallint*	from HR field, primary key
+  BF		varchar(10)		from Name field
+  DMId		varchar(11)		from DM field
+  HD		unsigned mediumint	from HD field
+  SAO		unsigned mediumint	from SAO field
+  FK5		unsigned smallint	from FK5 field
+  IRFlag	char(1)			from IRflag field
+  IRCode	char(1)			from r_IRflag field
+  MultCode	char(1)			from Multiple field
+  ADS		unsigned smallint	from ADS field
+  ADSnc		varchar(2)		from ADScomp field
+  VarID		varchar(9)		from VarID field
+  RAh19		unsigned tinyint	from RAh1900 field
+  RAm19		unsigned tinyint	from RAm1900 field
+  RAs19		decimal(3,1)		from RAs1900 field
+  Declb19	char(1)			from DE-1900 field
+  Decld19	unsigned tinyint	from DEd1900 field
+  Declm19	unsigned tinyint	from DEm1900 field
+  Decls19	unsigned tinyint	from DEs1900 field
+  RAh20		unsigned tinyint	from RAh2000 field
+  RAm20		unsigned tinyint	from RAm2000 field
+  RAs20		decimal(3,1)		from RAs2000 field
+  Declb20	char(1)			from DE-2000 field
+  Decld20	unsigned tinyint	from DEd2000 field
+  Declm20	unsigned tinyint	from DEm2000 field
+  Decls20	unsigned tinyint	from DEs2000 field
+  GLong		decimal(5,2)		from GLON field
+  GLat		decimal(4,2)		from GLAT field
+  Vmag		decimal(3,2)		from Vmag field
+  VmagCode	char(1)			from n_Vmag field
+  VmagFlag	char(1)			from u_Vmag field
+  BV		decimal(3,2)		from B-V field
+  BVFlag	char(1)			from u_B-V field
+  UB		decimal(3,2)		from U-B field
+  UBFlag	char(1)			from u_U-B field
+  RI		decimal(3,2)		from R-I field
+  RICode	char(1)			from n_R-I field
+  Spectrum	varchar(20)		from SpType field
+  SpectrumCode	char(1)			from n_SpType field
+  PMRA		decimal(4,3)		from pmRA field
+  PMDec		decimal(4,3)		from pmDE field
+  PlxFlag	char(1)			from n_Parallax field
+  Plx		decimal(4,3)		from Parallax field
+  RadVel	smallint		from RadVel field
+  RadVelCom	varchar(4)		from n_RadVel field
+  RotVelLim	varchar(2)		from l_RotVel field
+  RotVel	smallint		from RotVel field
+  RotVelFlag	char(1)			from u_RotVel field
+  Dmag		decimal(3,1)		from Dmag field
+  Sep		decimal(5,1)		from Sep field
+  MultID	varchar(4)		from MultID field
+  MultNum	tinyint			from MultCnt field
+  NoteFlag	char(1)			from NoteFlag field
+Note: * Indicates NOT NULL, otherwise DEFAULT NULL.

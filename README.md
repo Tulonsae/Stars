@@ -35,6 +35,12 @@ This table uses information from Chris Dolan's list of stars in Bright Star
 Catlog order. (The data his website has been put into a tsv file.) This list
 is mostly included in the Stars Project for the star names.
 
+bsc5dat Table
+-------------
+This table uses the catalog data file of the Yale Bright Star Catalog (aka
+Harvard Revised) from the VizieR archives. The data is from the 5th Revised Ed,
+published in 1991.
+
 IP Notes
 --------
 This project contains mixed content from a variety of sources.
