@@ -12,21 +12,28 @@ under Source) for more info. As of July 20, 2016, the list contains 125 stars.
 
 Files
 -----
+|Name			|Description
+|-----------------------|-----------
 |Info.txt		|this file
 |wgsn-schema.sql	|schema sql (mySQL), see Schema below
 |wgsn-input-sql.awk	|awk script - converts data into input sql
 
 External Files
 --------------
+|Name			|Description
+|-----------------------|-----------
 |IAU-CSN.txt		|IAU-CSN.txt data file, see Data below
 |input.sql		|input sql - contains all data in IAU-CSN.txt
 
 Instructions
 ------------
 * From Source:
+
      curl -O http://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt
      tail -n +16 IAU-CSN.txt | awk -f wgsn-input-sql.awk > wgsn-input.sql
+
 * From Tulonsae:
+
      curl -O https://tulonsae.org/stars/wgsn/IAU-CSN.txt \
           -O https://tulonsae.org/stars/wgsn/wgsn-input.sql
 
@@ -56,9 +63,10 @@ Data:
 * Con - constellation
 * HIP# - Hipparcos Catalog ID
 * HD# - Henry Draper Catalog ID
-* Approved - date (yyyy-mm-dd)
+* Approved - date (yyyy-mm-dd), Note 1
+
 Notes:
-[1] Names marked approved 2015-12-15 are expolanet host star names.
+ 1. Names marked approved 2015-12-15 are expolanet host star names.
 
 Schema:
 -------
