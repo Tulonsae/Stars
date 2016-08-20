@@ -14,7 +14,7 @@ Files
 -----
 |Name			|Description
 |-----------------------|-----------
-|Info.txt		|this file
+|Info.md		|this file
 |wgsn-schema.sql	|schema sql (mySQL), see Schema below
 |wgsn-input-sql.awk	|awk script - converts data into input sql
 
