@@ -14,7 +14,7 @@ BEGIN {
 }
 
 {
-   printf "INSERT INTO wgsn (Name, Desg, RA, Decl, Vmag, ID, Con, HIP, HD, HR, Approved) VALUES ("
+   printf "INSERT INTO wgsn (Name, Desg, RA, DE, VMag, Id, Con, HIP, HD, HR, Approved) VALUES ("
 
    # Name
    name = sprintf("%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s", $1, $2, $3, $4, $5, $6,
