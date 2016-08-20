@@ -16,14 +16,14 @@ Files
 |-----------------------|-----------
 |Info.md		|this file
 |wgsn-schema.sql	|schema sql (mySQL), see Schema below
-|wgsn-input-sql.awk	|awk script - converts data into input sql
+|wgsn-input-sql.awk	|awk script - creates input sql from data file
 
 External Files
 --------------
 |Name			|Description
 |-----------------------|-----------
 |IAU-CSN.txt		|IAU-CSN.txt data file, see Data below
-|input.sql		|input sql - contains all data in IAU-CSN.txt
+|wgsn-input.sql		|input sql - contains data for all stars in IAU-CSN.txt
 
 Instructions
 ------------
