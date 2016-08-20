@@ -4,7 +4,7 @@ BEGIN {
 }
 
 {
-   printf "INSERT INTO `hip-hd` (HIP, HD) VALUES ("
+   printf "INSERT INTO `hipTOhd` (HIP, HD) VALUES ("
 
    # HIP
    hip = sprintf("%s%s%s%s%s%s", $9, $10, $11, $12, $13, $14)

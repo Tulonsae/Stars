@@ -1,4 +1,4 @@
-CREATE TABLE `hip-hd` (
+CREATE TABLE `hipTOhd` (
   `HIP` mediumint unsigned NOT NULL,
   `HD` mediumint unsigned DEFAULT NULL,
   PRIMARY KEY (`HIP`)

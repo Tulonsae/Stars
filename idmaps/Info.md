@@ -1,50 +1,68 @@
-Information for ID mapping tables
-=================================
+Info on ID Mapping Tables
+=========================
 
 Description
 -----------
-This file describes various ID mapping tables. Each table contains ID data from
-the specified catalog's data file. This consists of the catalog's ID and its
-reference to another catalog ID. For example, the hip-hd table contains the
-Hipparcos ID (columns 9-14) and the HD ID (columns 391-396) from the Hipparcos
-hip_main.dat data file.
+This file describes various ID mapping tables. Each table contains a cross
+reference from its catalog ID to a different catalog's ID. (Both IDs come from
+the same data file so the cross reference is only as good as the original data
+file.) For example, the hipTOhd table contains the Hipparcos ID (columns 9-14)
+and the Henry Draper ID (columns 391-396) with both values coming from the
+Hipparcos hip_main.dat data file.
 
 Files
 -----
-Info.txt		this file
-hip-hd.schema		hip-hd schema file
-hip-hd-sql.awk		hip-hd awk script to convert data into input sql
+|Name			|Description
+|-----------------------|-----------
+|Info.md		|this file
+|chkdata		|directory containing useful awk scripts
+|hipTOhd.schema		|hipTOhd schema file (mySQL), see hipTOhd below
+|hipTOhd-sql.awk	|hipTOhd awk script - creates input sql from data file
 
 External Files
 --------------
-hip_main.dat		Hipparcos catalog main data file
-hip-hd-input.sql	hip-hd sql script to input data
+|Name			|Description
+|-----------------------|-----------
+|hip_main.dat		|Hipparcos catalog main data file
+|hipTOhd-input.sql	|hipTOhd input sql - contains HIP and HD data fields
 
-hip-hd
-------
-Instructions
-  From original source:
-    To get the hip_main.dat file
-       curl -O ftp://cdsarc.u-strasbg.fr/pub/cats/I/239/hip_main.dat.gz
-       gunzip hip_main.dat.gz
-    To create the input sql
-       awk -f hip-hd-sql.awk < hip_main.dat > hip-hd-input.sql
-  From Tulonsae:
-    To get the input sql
-       curl -O https://tulonsae.org/idmaps/hip-hd-input.sql.gz
-       gunzip hip-hd-input.sql.gz
+hipTOhd
+-------
+### Instructions
+* From original source:
 
-Data Fields
-  HIP, columns 9-14, HIP number (1/118322, I/239)
-  HD, columns 391-396, HD number (1/359083, III/135)
+        curl -O ftp://cdsarc.u-strasbg.fr/pub/cats/I/239/hip_main.dat.gz
+        gunzip hip_main.dat.gz
+        awk -f hipTOhd-sql.awk < hip_main.dat > hipTOhd-input.sql
 
-Schema, table name: hip-hd
-  HIP	unsigned mediumint, NOT NULL	from HIP field, primary key
-  HD	unsigned mediumint		from HD field
+* From Tulonsae:
+
+        curl -O https://tulonsae.org/stars/hipparcos/hip_main.dat.gz
+        gunzip hip_main.dat.gz
+        awk -f hipTOhd-sql.awk < hip_main.dat > hipTOhd-input.sql
+
+    Or
+
+        curl -O https://tulonsae.org/stars/idmaps/hipTOhd-input.sql.gz
+        gunzip hipTOhd-input.sql.gz
+
+### Data Fields
+The catalog value below is the catalog that the Id references.
+
+|Field	|Columns	|Description	|Range		|Catalog
+|-------|---------------|---------------|---------------|-------
+|HIP	|9-14		|HIP number	|1-118322	|I/239
+|HD	|391-396	|HD number	|1-359083	|III/135
+
+### Schema
+|Column	|Data Type					|From Data Field
+|-------|-----------------------------------------------|---------------
+| HIP	|unsigned mediumint, not null, primary key	|HIP
+| HD	|unsigned mediumint				|HD
 
 Sources
 -------
-hip_main.dat (Hipparcos)
-  From: The VizieR archives, hosted by CDS - Strasbourg
-  Location: ftp://cdsarc.u-strasbg.fr/pub/cats/I/239/
-  Date Retrieved: 16-Jul-2016
+* hip_main.dat (Hipparcos)
+    * From: The VizieR archives, hosted by CDS - Strasbourg
+    * Location: ftp://cdsarc.u-strasbg.fr/pub/cats/I/239/
+    * Date Retrieved: 16-Jul-2016
