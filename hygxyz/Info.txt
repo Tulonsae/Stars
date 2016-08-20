@@ -95,7 +95,7 @@ Notes:
       2000), +Z towards the north celestial pol, and +Y in the direction of
       R.A. 6 hours, declination 0 degrees.
   [5] Uses the same coordinate system described in Note [4]. The velocity
-      components are determine from the proper motion and the raidal velocity
+      components are determine from the proper motion and the radial velocity
       (where known).
 
 Schema:
