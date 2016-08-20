@@ -29,13 +29,13 @@ Instructions
 ------------
 * From Source:
 
-     curl -O http://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt
-     tail -n +16 IAU-CSN.txt | awk -f wgsn-input-sql.awk > wgsn-input.sql
+         curl -O http://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt
+         tail -n +16 IAU-CSN.txt | awk -f wgsn-input-sql.awk > wgsn-input.sql
 
 * From Tulonsae:
 
-     curl -O https://tulonsae.org/stars/wgsn/IAU-CSN.txt \
-          -O https://tulonsae.org/stars/wgsn/wgsn-input.sql
+         curl -O https://tulonsae.org/stars/wgsn/IAU-CSN.txt \
+              -O https://tulonsae.org/stars/wgsn/wgsn-input.sql
 
 Source
 ------
@@ -45,12 +45,12 @@ Star Names (WGSN)
 * Date Retrieved: 13-Aug-2016
 * Files Retrieved: IAU-CSN.txt
 * Other Links:
-** The WGN webpage on the IAU site:
-   http://www.iau.org/science/scientific_bodies/working_groups/280/
-** The WGSN webpage:
-   http://www.pas.rochester.edu/~emamajek/WGSN/
-** The WGSN Terms of Reference webpage:
-   http://www.pas.rochester.edu/~emamajek/WGSN/termsref.html
+    * The WGN webpage on the IAU site:
+      http://www.iau.org/science/scientific_bodies/working_groups/280/
+    * The WGSN webpage:
+      http://www.pas.rochester.edu/~emamajek/WGSN/
+    * The WGSN Terms of Reference webpage:
+      http://www.pas.rochester.edu/~emamajek/WGSN/termsref.html
 
 Data:
 -----
@@ -72,14 +72,14 @@ Schema:
 -------
 |Column		|Data Type		|From Data Field
 |---------------|-----------------------|---------------
-| Name		|varchar(16) not null	|Name
-| Desg		|varchar(13) not null	|Designation
-| RA		|decimal(9,6) not null	|RA(J2000)
-| DE		|decimal(8,6) not null	|Dec(J2000)
+| Name		|varchar(16), not null	|Name
+| Desg		|varchar(13), not null	|Designation
+| RA		|decimal(9,6), not null	|RA(J2000)
+| DE		|decimal(8,6), not null	|Dec(J2000)
 | VMag		|decimal(3,2)		|Vmag
 | Id		|varchar(5)		|ID
 | Con		|char(3)		|Con
 | HIP		|mediumint unsigned	|HIP#
 | HD		|mediumint unsigned	|HD#
 | HR		|smallint unsigned	|Designation, if cat code HR
-| Approved	|date not null		|Approved
+| Approved	|date, not null		|Approved
