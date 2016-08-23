@@ -6,13 +6,18 @@ and other sources of information about stars.
 
 Note: due to the size of the catalog data, this repository does not contain
 the external data files or the generated input sql scripts. These are available
-on the Internet and the instructions/locations are noted within the Info.txt
+on the Internet and the instructions/locations are noted within the Info.md
 file for each table.
+
+coords
+------
+This directory contains information for various coordinates tables (hip2loc).
+See its Info.md file for details.
 
 idmaps
 ------
 This directory contains information for various ID mapping tables (hip-hd).
-See its Info.txt file for details.
+See its Info.md file for details.
 
 bsc5dat
 -------

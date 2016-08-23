@@ -1,0 +1,9 @@
+CREATE TABLE `hip2loc` (
+  `HIP` mediumint unsigned NOT NULL,
+  `Plx` decimal(5,2) NOT NULL,
+  `GLon` decimal(7,4) NOT NULL,
+  `GLat` decimal(6,4) NOT NULL,
+  `RA` decimal(9,6) NOT NULL,
+  `DE` decimal(8,6) NOT NULL,
+  PRIMARY KEY (`HIP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
