@@ -1,26 +1,27 @@
 BEGIN {
    FS = " "
+   printf "SET NAMES utf8;\n"
 }
 
 {
-   printf "INSERT INTO hip2dat (ID, Sn, So, nC, RA, Decl, Plx, PMRA, PMDec, eRA, eDecl, ePlx, ePMRA, ePMDec, nFT, F2, F1, cda, catID, Mag, eMag, sMag, VA, BV, eBV, VI, UW1, UW2, UW3, UW4, UW5, UW6, UW7, UW8, UW9, UW10, UW11, UW12, UW13, UW14, UW15) VALUES ("
+   printf "INSERT INTO hip2 (HIP, Snew, Sold, nComp, RA, DE, Plx, PMRA, PMDE, eRA, eDE, ePlx, ePMRA, ePMDE, nFT, F2, F1, cda, catId, HPmag, eMag, sMag, VA, BV, eBV, VI, UW1, UW2, UW3, UW4, UW5, UW6, UW7, UW8, UW9, UW10, UW11, UW12, UW13, UW14, UW15) VALUES ("
 
-   # ID
+   # HIP
    printf "%s", $1
 
-   # Sn
+   # Snew
    printf ",%s", $2
 
-   # So
+   # Sold
    printf ",%s", $3
 
-   # nC
+   # nComp
    printf ",%s", $4
 
    # RA
    printf ",%s", $5
 
-   # Decl
+   # DE
    printf ",%s", $6
 
    # Plx
@@ -29,13 +30,13 @@ BEGIN {
    # PMRA
    printf ",%s", $8
 
-   # PMDec
+   # PMDE
    printf ",%s", $9
 
    # eRA
    printf ",%s", $10
 
-   # eDecl
+   # eDE
    printf ",%s", $11
 
    # ePlx
@@ -44,7 +45,7 @@ BEGIN {
    # ePMRA
    printf ",%s", $13
 
-   # ePMDec
+   # ePMDE
    printf ",%s", $14
 
    # nFT
@@ -59,10 +60,10 @@ BEGIN {
    # cda
    printf ",%s", $18
 
-   # catID
+   # catId
    printf ",%s", $19
 
-   # Mag
+   # HPmag
    printf ",%s", $20
 
    # eMag
