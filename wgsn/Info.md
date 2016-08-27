@@ -16,7 +16,7 @@ Files
 |-----------------------|-----------
 |Info.md		|this file
 |wgsn-schema.sql	|schema sql (mySQL), see Schema below
-|wgsn-input-sql.awk	|awk script - creates input sql from data file
+|wgsn-sql.awk		|awk script - creates input sql from data file
 
 External Files
 --------------
@@ -30,7 +30,7 @@ Instructions
 * From Source:
 
          curl -O http://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt
-         tail -n +16 IAU-CSN.txt | awk -f wgsn-input-sql.awk > wgsn-input.sql
+         tail -n +16 IAU-CSN.txt | awk -f wgsn-sql.awk > wgsn-input.sql
 
 * From Tulonsae:
 
