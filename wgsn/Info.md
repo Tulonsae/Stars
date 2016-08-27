@@ -8,14 +8,14 @@ the International Astronomical Union (IAU) organized the Working Group on Star
 Names (WGSN), consisting of an international group of astronomers, to catalog
 and standardize proper names for stars for the international astronomical
 community. Please see their Terms of Reference webpage (see Other Links below,
-under Source) for more info. As of July 20, 2016, the list contains 125 stars.
+under Source) for more info. As of August 21, 2016, the list contains 186 stars.
 
 Files
 -----
 |Name			|Description
 |-----------------------|-----------
 |Info.md		|this file
-|wgsn-schema.sql	|schema sql (mySQL), see Schema below
+|wgsn.schema		|schema sql (mySQL), see Schema below
 |wgsn-sql.awk		|awk script - creates input sql from data file
 
 External Files
@@ -30,7 +30,7 @@ Instructions
 * From Source:
 
          curl -O http://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt
-         tail -n +16 IAU-CSN.txt | awk -f wgsn-sql.awk > wgsn-input.sql
+         tail -n +21 IAU-CSN.txt | awk -f wgsn-sql.awk > wgsn-input.sql
 
 * From Tulonsae:
 
@@ -42,7 +42,7 @@ Source
 * From: IAU Catalog of Star Names (IAU-CSN), IAU Division C Working Group on
 Star Names (WGSN)
 * Location: http://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt
-* Date Retrieved: 13-Aug-2016
+* Date Retrieved: 26-Aug-2016
 * Files Retrieved: IAU-CSN.txt
 * Other Links:
     * The WGN webpage on the IAU site:
@@ -59,8 +59,9 @@ Data:
 * RA(J2000) - Right Ascension, J2000, in degrees (converted to decimal)
 * Dec(J2000) - Declination, J2000, in degrees (converted to decimal)
 * Vmag - apparent visual magnitude
-* ID - ??, 3-letter Greek and/or 2-digit number, if known
+* ID - Bayer/Flamsteed id
 * Con - constellation
+* # - component number to Bayer/Flamsteed designation, blank = A
 * HIP# - Hipparcos Catalog ID
 * HD# - Henry Draper Catalog ID
 * Approved - date (yyyy-mm-dd), Note 1
@@ -77,7 +78,8 @@ Schema:
 | RA		|decimal(9,6), not null	|RA(J2000)
 | DE		|decimal(8,6), not null	|Dec(J2000)
 | VMag		|decimal(3,2)		|Vmag
-| Id		|varchar(5)		|ID
+| BFid		|varchar(5)		|ID
+| BFnum		|char(1)		|#
 | Con		|char(3)		|Con
 | HIP		|mediumint unsigned	|HIP#
 | HD		|mediumint unsigned	|HD#

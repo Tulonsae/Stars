@@ -3,18 +3,8 @@ BEGIN {
    printf "SET NAMES utf8;\n"
 }
 
-# Skips empty lines.
-/^$/ {
-   next
-}
-
-# Fixes a tab which should be a space.
-/.*\t.*/ {
-   gsub(/\t/, "    ")
-}
-
 {
-   printf "INSERT INTO wgsn (Name, Desg, RA, DE, VMag, Id, Con, HIP, HD, HR, Approved) VALUES ("
+   printf "INSERT INTO wgsn (Name, Desg, RA, DE, VMag, BFid, BFnum, Con, HIP, HD, HR, Approved) VALUES ("
 
    # Name
    name = sprintf("%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s", $1, $2, $3, $4, $5, $6,
@@ -32,16 +22,16 @@ BEGIN {
    split(desg, desgId, " ");
 
    # RA
-   ra = sprintf("%s%s%s%s%s%s%s%s%s%s", $32, $33, $34, $35, $36, $37, $38, $39,
-        $40, $41)
+   ra = sprintf("%s%s%s%s%s%s%s%s%s%s", $33, $34, $35, $36, $37, $38, $39,
+        $40, $41, $42)
    gsub(/ /, "", ra)
    printf ",%s", ra
 
-   # Decl
-   decl = sprintf("%s%s%s%s%s%s%s%s%s%s", $44, $45, $46, $47, $48, $49, $50,
-          $51, $52, $53)
-   gsub(/ /, "", decl)
-   printf ",%s", decl
+   # DE
+   de = sprintf("%s%s%s%s%s%s%s%s%s%s", $44, $45, $46, $47, $48, $49, $50,
+        $51, $52, $53)
+   gsub(/ /, "", de)
+   printf ",%s", de
 
    # Vmag
    vmag = sprintf("%s%s%s%s%s", $56, $57, $58, $59, $60)
@@ -51,20 +41,24 @@ BEGIN {
    else
       printf ",%s", vmag
 
-   # ID
-   id = sprintf("%s%s%s%s%s", $64, $65, $66, $67, $68)
-   gsub(/ /, "", id)
-   if (id == "-")
+   # BFid
+   bfid = sprintf("%s%s%s%s%s", $62, $63, $64, $65, $66)
+   gsub(/ /, "", bfid)
+   if (bfid == "-")
       printf ",null" 
    else
-      printf ",\"%s\"", id
+      printf ",\"%s\"", bfid
+
+   # BFnum
+   bfnum = sprintf("%s", $72)
+   printf ",\"%s\"", bfnum
 
    # Con
-   con = sprintf("%s%s%s", $71, $72, $73)
+   con = sprintf("%s%s%s", $68, $69, $70)
    printf ",\"%s\"", con
 
    # HIP
-   hip = sprintf("%s%s%s%s%s%s", $76, $77, $78, $79, $80, $81)
+   hip = sprintf("%s%s%s%s%s%s", $74, $75, $76, $77, $78, $79)
    gsub(/ /, "", hip)
    if (hip == "-")
       printf ",null" 
@@ -72,7 +66,7 @@ BEGIN {
       printf ",%s", hip
 
    # HD
-   hd = sprintf("%s%s%s%s%s%s", $84, $85, $86, $87, $88, $89)
+   hd = sprintf("%s%s%s%s%s%s", $81, $82, $83, $84, $85, $86)
    gsub(/ /, "", hd)
    if (hd == "-")
       printf ",null" 
@@ -86,8 +80,8 @@ BEGIN {
       printf ",null" 
 
    # Approved
-   approved = sprintf("%s%s%s%s%s%s%s%s%s%s", $92, $93, $94, $95, $96, $97,
-              $98, $99, $100, $101)
+   approved = sprintf("%s%s%s%s%s%s%s%s%s%s", $88, $89, $90, $91, $92, $93,
+              $94, $95, $96, $97)
    printf ",\'%s\'", approved
 
    printf ");\n"

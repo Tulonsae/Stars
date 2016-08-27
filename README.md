@@ -53,8 +53,8 @@ wgsn
 ----
 This directory contains the information for the wgsn table. The wgsn table uses
 the text data file, containing approved standardized proper names for stars,
-from the IAU WGSN. This Working Group was organized in 2016. As of July 20,
-2016, the list contains 125 stars.
+from the IAU WGSN. This Working Group was organized in 2016. As of August 21,
+2016, the list contains 186 stars.
 
 Intellectual Property Notes
 ---------------------------
