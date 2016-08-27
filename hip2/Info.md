@@ -17,7 +17,7 @@ Files
 |-----------------------|-----------
 |Info.md		|this file
 |HIP2-ReadMe		|renamed copy of Hipparcos-2 ReadMe from Source
-|hip2-schema.sql	|schema sql (mySQL), see Schema below
+|hip2.schema		|schema sql (mySQL), see Schema below
 |hip2-sql.awk		|awk script - creates input sql from data file
 
 External Files
