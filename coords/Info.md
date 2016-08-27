@@ -14,6 +14,8 @@ Files
 |-----------------------|-----------
 |Info.md		|this file
 |chkdata		|directory containing useful awk scripts
+|hip1loc.schema		|hip1loc schema file (mySQL), see hip1loc below
+|hip1loc-sql.awk	|hip1loc awk script - creates input sql from data file
 |hip2loc.schema		|hip2loc schema file (mySQL), see hip2loc below
 |hip2loc-sql.awk	|hip2loc awk script - creates input sql from data file
 
@@ -21,8 +23,61 @@ External Files
 --------------
 |Name			|Description
 |-----------------------|-----------
+|q_hip1_gal.tsv		|VizieR query on hip_main.dat (I/239)
+|hip1loc-input.sql	|hip1loc input sql - contains data from q_hip1_gal.tsv
 |q_hip2_gal.tsv		|VizieR query on hip2.dat (I/311)
 |hip2loc-input.sql	|hip2loc input sql - contains data from q_hip2_gal.tsv
+
+hip1loc
+-------
+### Instructions
+To reproduce query, see beginning of q_hip1_gal.tsv for query parameters and
+go to http://vizier.u-strasbg.fr/viz-bin/VizieR
+
+* From Tulonsae:
+
+        curl -O https://tulonsae.org/stars/hipparcos/q_hip1_gal.tsv.gz
+        gunzip q_hip1_gal.tsv.gz
+        tail -n +62 q_hip1_gal.tsv | awk -f hip1loc-sql.awk > hip1loc-input.sql
+
+    Or
+
+        curl -O https://tulonsae.org/stars/coords/hip1loc-input.sql.gz
+        gunzip hip1loc-input.sql.gz
+
+### Data Fields
+Data retrieved 24-Aug-2016, using VizieR query from catalog hip_main (I/239).
+
+|Field	|Columns|Description
+|-------|-------|-----------
+|Glon	|1-8	|galactic longitude, decimal degrees
+|Glat	|10-17	|galactic latitude, decimal degrees
+|RAJ2000|19-28	|right ascension, epoch J2000, decimal degrees
+|DEJ2000|30-39	|declination, epoch J2000, decimal degrees
+|HIP	|41-46	|HIP number (range: 1-120404)
+|Vmag	|48-52	|V magnitude
+|Plx	|54-60	|parallax, milli-second of arc
+|BTmag	|62-67	|BT magnitude
+|VTmag	|69-74	|VT magnitude
+|B-V	|76-81	|B-V magnitude
+|V-I	|83-87	|V-I magnitude
+|SpType	|89-100	|Spectral Type
+
+### Schema
+|Column	|Data Type					|From Data Field
+|-------|-----------------------------------------------|---------------
+|HIP	|unsigned mediumint, not null, primary key	|HIP
+|Plx	|decimal(5,2), default null			|Plx
+|GLon	|decimal(7,4), default null			|Glon
+|GLat	|decimal(6,4), default null			|Glat
+|RA	|decimal(9,6), default null			|RAJ2000
+|DE	|decimal(8,6), default null			|DEJ2000
+|SpType	|varchar(12), default null			|SpType
+|Vmag	|decimal(4,2), default null			|Vmag
+|BTmag	|decimal(5,3), default null			|BTmag
+|VTmag	|decimal(5,3), default null			|VTmag
+|BV	|decimal(4,3), default null			|BV
+|VI	|decimal(3,2), default null			|VI
 
 hip2loc
 -------

@@ -11,8 +11,8 @@ file for each table.
 
 coords
 ------
-This directory contains information for various coordinates tables (hip2loc).
-See its Info.md file for details.
+This directory contains information for various coordinates tables (hip1loc,
+hip2loc). See its Info.md file for details.
 
 idmaps
 ------

@@ -1,0 +1,15 @@
+CREATE TABLE `hip1loc` (
+  `HIP` mediumint unsigned NOT NULL,
+  `Plx` decimal(5,2) DEFAULT NULL,
+  `GLon` decimal(7,4) DEFAULT NULL,
+  `GLat` decimal(6,4) DEFAULT NULL,
+  `RA` decimal(9,6) DEFAULT NULL,
+  `DE` decimal(8,6) DEFAULT NULL,
+  `SpType` varchar(12) DEFAULT NULL,
+  `Vmag` decimal(4,2) DEFAULT NULL,
+  `BTmag` decimal(5,3) DEFAULT NULL,
+  `VTmag` decimal(5,3) DEFAULT NULL,
+  `BV` decimal(4,3) DEFAULT NULL,
+  `VI` decimal(3,2) DEFAULT NULL,
+  PRIMARY KEY (`HIP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
