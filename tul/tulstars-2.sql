@@ -13,7 +13,7 @@ BEGIN
         SET @tul = NULL;
         SELECT `Tul` FROM `tulstars` WHERE `HIP` = @hip INTO @tul;
         IF @tul is NOT NULL THEN
-           UPDATE `tulstars` SET `Name` = @name, `sName` = "W"
+           UPDATE `tulstars` SET `Name` = @name, `sName` = "WG"
             WHERE `Tul` = @tul;
         ELSE
            SELECT "Missing", @hip, @name;

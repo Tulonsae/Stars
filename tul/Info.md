@@ -18,10 +18,44 @@ Files
 tulstars
 --------
 ### Instructions
+Requires the following tables (with their data).
+* hip1loc
+* wgsn
+* hipTOhd
+
 Run the sql scripts in the following order.
 * tulstars.schema
 * tulstars-1.sql - this one can take hours
 * tulstars-2.sql
+
+### Important Notes
+* Unless otherwise noted, all data is epoch J2000.
+* The Plx values are based from earth, but the Galactic Coordinates are based
+from the sun (Sol) so cartesian coordinates are not entirely precise.
+* The data for Sol determined manually
+    * Galactic coordinates: 0, 0 (by definition)
+    * Distance: 0 (by rounding, definition)
+    * Plx: 206264822.2 mas (computed parallax of the distance 1 AU)
+    * RA (of North pole): 286.13 degrees or 19h 4m 30s (from Wikipedia)
+    * DE (of North pole): +63.87 degrees (from Wikipedia)
+    * SpType: G2V (from Wikipedia)
+    * Vmag: -26.74 (from Wikipedia)
+    * Absolute magnitude: 4.83 (from Wikipedia)
+* The data for Sgr A* (Sagittarius A*) determined manually
+    * Galactic coordiantes: 359.9442, -00.0462 (from Simbad)
+    * ICRS coordinates: 17 45 40.03599, -29 00 28.1699
+    * RA: 266.416817 (converted from ICRS hms to decimal degrees)
+    * DE: -28.992175 (converted from ICRS degrees to decimal degrees)
+    * Distance: 7860, estimated (from Wikipedia with cited source)
+      and 7874.01575 from computed Plx
+    * Plx: .127 mas (computed from Distance)
+    * SpType: Blackhole (not actually a spectral type)
+    * H: -6.34915 (computed)
+    * D: 5471.30774 (computed)
+    * V: 4.56598 (computed)
+* Stars with values of Plx that are zero, negative, or null (in Hipparcos) were
+not included.
+* Cartesian coordinates are rounded to 5 decimal points.
 
 ### Data Description
 |Column	|From		|Description
@@ -34,9 +68,9 @@ Run the sql scripts in the following order.
 |SpType	|hip1loc, SpType|spectral type
 |Plx	|hip1loc, Plx	|parallax, milli-second of arc
 |Dist	|calculated (2)	|distance in parsecs
-|X	|calculated (3)	|x coordinate
-|Y	|calculated (4)	|y coordinate
-|Z	|calculated (5)	|z coordinate
+|H	|calculated (3)	|horizontal coordinate
+|D	|calculated (5)	|depth coordinate
+|V	|calculated (4)	|vertical coordinate
 |Vmag	|hip1loc, Vmag	|
 |BTmag	|hip1loc, BTmag	|
 |VTmag	|hip1loc, VTmag	|
@@ -54,13 +88,14 @@ Run the sql scripts in the following order.
 Notes:
  1. Generated with auto_increment.
  2. Dist = 1000 / Plx
- 3. X = Dist cos(GLon) sin(Glat)
- 4. Y = Dist sin(GLon) sin(GLat)
- 5. Z = Dist cos(GLat)
+ 3. H = Dist cos(GLon) sin(Glat)
+ 4. V = Dist sin(GLon) sin(GLat)
+ 5. D = Dist cos(GLat)
  6. Code for source of Data
+    * M - manually determined, see Important Notes
     * H1 - Hipparcos 1
     * H2 - Hipparcos 2
-    * W - WGSN
+    * WG - WGSN
 
 ### Schema
 |Column	|Data Type
@@ -71,11 +106,11 @@ Notes:
 |GLon	|decimal(7,4), not null
 |GLat	|decimal(6,4), not null
 |SpType	|varchar(12), default null
-|Plx	|decimal(5,2), not null
-|Dist	|float, not null			change this to decimal
-|X	|float, not null			change this to decimal
-|Y	|float, not null			change this to decimal
-|Z	|float, not null			change this to decimal
+|Plx	|decimal(12,3), not null
+|Dist	|decimal(11,5), not null
+|H	|decimal(11,5), not null
+|D	|decimal(11,5), not null
+|V	|decimal(11,5), not null
 |Vmag	|decimal(4,2), default null
 |BTmag	|decimal(5,3), default null
 |VTmag	|decimal(5,3), default null
