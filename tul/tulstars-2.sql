@@ -41,8 +41,8 @@ BEGIN
        SELECT `HD` FROM `hipTOhd` WHERE `HIP` = @hip INTO @hd;
        IF @hd is NOT NULL THEN
           UPDATE `tulstars` SET `HD` = @hd WHERE `HIP` = @hip;
-       ENDIF; 
-    ENDIF;
+       END IF; 
+    END IF;
     SET i = i + 1;
   END WHILE;
 END;

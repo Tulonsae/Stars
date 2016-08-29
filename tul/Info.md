@@ -26,7 +26,7 @@ Requires the following tables (with their data).
 Run the sql scripts in the following order.
 * tulstars.schema
 * tulstars-1.sql - this one can take hours
-* tulstars-2.sql
+* tulstars-2.sql - this one also takes hours, but should be improved
 
 ### Important Notes
 * Unless otherwise noted, all data is epoch J2000.
