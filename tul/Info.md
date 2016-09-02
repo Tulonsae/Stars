@@ -12,8 +12,9 @@ Files
 |-----------------------|-----------
 |Info.md		|this file
 |tulstars.schema	|tulstars schema file (mySQL), see tulstars below
-|tulstars-1.sql		|input sql - data from Hip1, calculates Distance, XYZ
-|tulstars-2.sql		|update sql - adds HD ids
+|tulstars-1.sql		|input sql - initial stars, computes distance and xyz
+|tulstars-2.sql		|update sql - adds wgsn star names
+|tulstars-3.sql		|update sql - adds HD ids
 
 tulstars
 --------
@@ -25,8 +26,9 @@ Requires the following tables (with their data).
 
 Run the sql scripts in the following order.
 * tulstars.schema
-* tulstars-1.sql - this one can take hours
-* tulstars-2.sql - this one also takes hours, but should be improved
+* tulstars-1.sql - adds initial set of stars with distance and xyz coordinates
+* tulstars-2.sql - adds official (wgsn) names
+* tulstars-3.sql - adds HD catalog ids
 
 ### Important Notes
 * Unless otherwise noted, all data is epoch J2000.
@@ -56,6 +58,8 @@ from the sun (Sol) so cartesian coordinates are not entirely precise.
 * Stars with values of Plx that are zero, negative, or null (in Hipparcos) were
 not included.
 * Cartesian coordinates are rounded to 5 decimal points.
+* XYZ coordinates: xy is galatic plane, +x towards galatic center, +y is +90deg,
++z is above galatic plane
 
 ### Data Description
 |Column	|From		|Description
@@ -68,9 +72,9 @@ not included.
 |SpType	|hip1loc, SpType|spectral type
 |Plx	|hip1loc, Plx	|parallax, milli-second of arc
 |Dist	|calculated (2)	|distance in parsecs
-|H	|calculated (3)	|horizontal coordinate
-|D	|calculated (5)	|depth coordinate
-|V	|calculated (4)	|vertical coordinate
+|X	|calculated (3)	|axis from sol to galactic center, +x towards center
+|Y	|calculated (4)	|axis perpendicular to x, +y is +90deg (from x)
+|Z	|calculated (5)	|axis perpendicular to galatic plane, +z is above
 |Vmag	|hip1loc, Vmag	|
 |BTmag	|hip1loc, BTmag	|
 |VTmag	|hip1loc, VTmag	|
@@ -88,9 +92,9 @@ not included.
 Notes:
  1. Generated with auto_increment.
  2. Dist = 1000 / Plx
- 3. H = Dist cos(GLon) sin(Glat)
- 4. V = Dist sin(GLon) sin(GLat)
- 5. D = Dist cos(GLat)
+ 3. X = Dist cos(GLon) cos(GLat)
+ 4. Y = Dist sin(GLon) cos(GLat)
+ 5. Z = Dist sin(GLat)
  6. Code for source of Data
     * M - manually determined, see Important Notes
     * H1 - Hipparcos 1
