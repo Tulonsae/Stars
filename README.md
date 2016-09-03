@@ -16,8 +16,8 @@ hip2loc). See its Info.md file for details.
 
 idmaps
 ------
-This directory contains information for various ID mapping tables (hip-hd).
-See its Info.md file for details.
+This directory contains information for various ID mapping tables (hipTOhd,
+hipxids). See its Info.md file for details.
 
 bsc5dat
 -------
