@@ -31,12 +31,12 @@ BEGIN
   WHILE i <= n DO
     SELECT `HIP`, `Name` FROM `tt` WHERE `TC` = i
       INTO @hip, @name;
-      SET @tul = NULL;
-      SELECT `Tul` FROM `tulstars` WHERE `HIP` = @hip INTO @tul;
-      IF @tul is NOT NULL THEN
-         UPDATE `tulstars` SET `Name` = @name, `sName` = "WG" WHERE `Tul` = @tul;
+      SET @id = NULL;
+      SELECT `ID` FROM `tulhip1` WHERE `HIP` = @hip INTO @id;
+      IF @id is NOT NULL THEN
+         UPDATE `tulhip1` SET `Name` = @name, `sName` = "WG" WHERE `ID` = @id;
       ELSE
-         SELECT "INFO - not in tulstars", @hip, @name;
+         SELECT "INFO - not in tulhip1", @hip, @name;
       END IF;
     SET i = i + 1;
   END WHILE;
@@ -44,3 +44,4 @@ END;
 ;;
 DELIMITER ;
 CALL tproc();
+show warnings;

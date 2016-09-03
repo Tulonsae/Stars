@@ -5,12 +5,12 @@ DROP TABLE IF EXISTS `tt`;
 CREATE TABLE `tt` (
   `HIP` mediumint(8) unsigned DEFAULT NULL,
   `HD` mediumint(8) unsigned DEFAULT NULL,
-  `Tul` mediumint(8) unsigned DEFAULT NULL
+  `ID` mediumint(8) unsigned DEFAULT NULL
 );
-INSERT INTO `tt` (`Tul`, `HIP`, `HD`)
-  SELECT `tulstars`.`Tul`, `tulstars`.`HIP`, `hipTOhd`.`HD`
-    FROM `tulstars` LEFT JOIN `hipTOhd`
-    ON `tulstars`.`HIP` = `hipTOhd`.`HIP`;
+INSERT INTO `tt` (`ID`, `HIP`, `HD`)
+  SELECT `tulhip1`.`ID`, `tulhip1`.`HIP`, `hipTOhd`.`HD`
+    FROM `tulhip1` LEFT JOIN `hipTOhd`
+    ON `tulhip1`.`HIP` = `hipTOhd`.`HIP`;
 
 -- Clean up data
 SELECT "INFO - deleting null HD values", count(*) from tt where `HD` is null;
@@ -34,12 +34,13 @@ BEGIN
   SELECT COUNT(*) FROM `tt` INTO n;
   SET i = 1;
   WHILE i <= n DO
-    SELECT `Tul`, `HD` FROM `tt` WHERE `TC` = i
-      INTO @tul, @hd;
-    UPDATE `tulstars` SET `HD` = @hd WHERE `Tul` = @tul;
+    SELECT `ID`, `HD` FROM `tt` WHERE `TC` = i
+      INTO @id, @hd;
+    UPDATE `tulhip1` SET `HD` = @hd WHERE `ID` = @id;
     SET i = i + 1;
   END WHILE;
 END;
 ;;
 DELIMITER ;
 CALL tproc();
+show warnings;

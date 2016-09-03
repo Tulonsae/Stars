@@ -11,12 +11,12 @@ Files
 |Name			|Description
 |-----------------------|-----------
 |Info.md		|this file
-|tulstars.schema	|tulstars schema file (mySQL), see tulstars below
-|tulstars-1.sql		|input sql - initial stars, computes distance and xyz
-|tulstars-2.sql		|update sql - adds wgsn star names
-|tulstars-3.sql		|update sql - adds HD ids
+|tulhip1.schema		|tulhip1 schema file (mySQL), see tulhip1 below
+|tulhip1-1.sql		|input sql - initial stars, computes distance and xyz
+|tulhip1-2.sql		|update sql - adds wgsn star names
+|tulhip1-3.sql		|update sql - adds HD ids
 
-tulstars
+tulhip1
 --------
 ### Instructions
 Requires the following tables (with their data).
@@ -25,10 +25,10 @@ Requires the following tables (with their data).
 * hipTOhd
 
 Run the sql scripts in the following order.
-* tulstars.schema
-* tulstars-1.sql - adds initial set of stars with distance and xyz coordinates
-* tulstars-2.sql - adds official (wgsn) names
-* tulstars-3.sql - adds HD catalog ids
+* tulhip1.schema
+* tulhip1-1.sql - adds initial set of stars with distance and xyz coordinates
+* tulhip1-2.sql - adds official (wgsn) names
+* tulhip1-3.sql - adds HD catalog ids
 
 ### Important Notes
 * Unless otherwise noted, all data is epoch J2000.
@@ -64,7 +64,7 @@ not included.
 ### Data Description
 |Column	|From		|Description
 |-------|---------------|-----------
-|Tul	|generated (1)	|Tul Id
+|ID	|generated (1)	|Id
 |RA	|hip1loc, RA	|right ascension, epoch J2000, decimal degrees
 |DE	|hip1loc, DE	|declination, epoch J2000, decimal degrees
 |GLon	|hip1loc, GLon	|galactic longitude, decimal degrees
@@ -104,7 +104,7 @@ Notes:
 ### Schema
 |Column	|Data Type
 |-------|---------
-|Tul	|mediumint unsigned, not null auto_increment, primary key
+|ID	|mediumint unsigned, not null auto_increment, primary key
 |RA	|decimal(9,6), not null
 |DE	|decimal(8,6), not null
 |GLon	|decimal(7,4), not null

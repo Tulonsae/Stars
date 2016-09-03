@@ -1,11 +1,11 @@
 -- Add initial set of stars
 
 -- Manually add 2 major reference points (that are not in Hipparcos catalog)
-INSERT INTO `tulstars` (`RA`, `DE`, `GLon`, `GLat`, `SpType`, `Plx`, `Dist`,
+INSERT INTO `tulhip1` (`RA`, `DE`, `GLon`, `GLat`, `SpType`, `Plx`, `Dist`,
                         `X`, `Y`, `Z`, `HIP`, `sLoc`, `sType`, `Name`, `sName`)
                 VALUES (286.13, 63.87, 0, 0, "G2V", 206264822.2, 0,
                         0, 0, 0, null, 'M', 'M', "Sol", 'M');
-INSERT INTO `tulstars` (`RA`, `DE`, `GLon`, `GLat`, `SpType`,
+INSERT INTO `tulhip1` (`RA`, `DE`, `GLon`, `GLat`, `SpType`,
                         `Plx`, `Dist`, `X`, `Y`, `Z`,
                         `HIP`, `sLoc`, `sType`, `Name`, `sName`)
                 VALUES (266.416817, -28.992175, 359.9442, -00.0462, "Blackhole",
@@ -68,9 +68,11 @@ END;
 ;;
 DELIMITER ;
 CALL tproc();
+show warnings;
 
 -- Add the data to the real table
-INSERT INTO `tulstars` (`RA`, `DE`, `GLon`, `GLat`, `SpType`, `Plx`, `Dist`,
+INSERT INTO `tulhip1` (`RA`, `DE`, `GLon`, `GLat`, `SpType`, `Plx`, `Dist`,
                         `X`, `Y`, `Z`, `HIP`, `sLoc`)
                  SELECT `RA`, `DE`, `GLon`, `GLat`, `SpType`, `Plx`, `Dist`,
                         `X`, `Y`, `Z`, `HIP`, "H1" FROM `tt`;
+show warnings;

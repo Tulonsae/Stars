@@ -1,5 +1,5 @@
-CREATE TABLE `tulstars` (
-  `Tul` mediumint unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tulhip1` (
+  `ID` mediumint unsigned NOT NULL AUTO_INCREMENT,
   `RA` decimal(9,6) NOT NULL,
   `DE` decimal(8,6) NOT NULL,
   `GLon` decimal(7,4) NOT NULL,
@@ -23,5 +23,5 @@ CREATE TABLE `tulstars` (
   `sType` char(2) DEFAULT NULL,
   `sMag` char(2) DEFAULT NULL,
   `sName` char(2) DEFAULT NULL,
-  PRIMARY KEY (`Tul`)
+  PRIMARY KEY (`ID`)
 );
