@@ -52,9 +52,9 @@ from the sun (Sol) so cartesian coordinates are not entirely precise.
       and 7874.01575 from computed Plx
     * Plx: .127 mas (computed from Distance)
     * SpType: Blackhole (not actually a spectral type)
-    * H: -6.34915 (computed)
-    * D: 5471.30774 (computed)
-    * V: 4.56598 (computed)
+    * X: 7874.00946 (computed)
+    * Y: -7.66845 (computed)
+    * Z: -6.34914 (computed)
 * Stars with values of Plx that are zero, negative, or null (in Hipparcos) were
 not included.
 * Cartesian coordinates are rounded to 5 decimal points.
