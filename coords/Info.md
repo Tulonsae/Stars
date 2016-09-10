@@ -124,6 +124,11 @@ Data retrieved 20-Aug-2016, using VizieR query from catalog I/311/hip2.
 
 hipxloc
 -------
+### Notes
+The Dist value for #15863 (aka Mirfak) is incorrect. It contains the distance
+calculated from the Plx value in the Hipparcos 1 data set rather than the Plx
+value in this data set.
+
 ### Instructions
 To reproduce query, see beginning of q_hipx_gal.tsv for query parameters and
 go to http://vizier.u-strasbg.fr/viz-bin/VizieR
