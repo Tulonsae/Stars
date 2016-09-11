@@ -12,8 +12,8 @@ file for each table.
 gloc
 ----
 This directory contains information for various galactic coordinates tables
-(hip1loc, hip2loc, hipxloc). When available, spectral type and other catalog IDs
-are included in the table. See its Info.md file for further details.
+(bmkloc, hip1loc, hip2loc, hipxloc). When available, spectral type and other
+catalog IDs are included in the table. See its Info.md file for further details.
 
 idmaps
 ------

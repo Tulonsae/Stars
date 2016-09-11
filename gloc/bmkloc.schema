@@ -1,0 +1,11 @@
+CREATE TABLE `bmkloc` (
+  `ID` mediumint unsigned NOT NULL AUTO_INCREMENT,
+  `GLon` decimal(7,4) DEFAULT NULL,
+  `GLat` decimal(6,4) DEFAULT NULL,
+  `RA` decimal(8,5) DEFAULT NULL,
+  `DE` decimal(7,5) DEFAULT NULL,
+  `Name` varchar(26) DEFAULT NULL,
+  `MKflag` char(1) DEFAULT NULL,
+  `SpType` varchar(26) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

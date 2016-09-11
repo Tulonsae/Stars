@@ -21,6 +21,8 @@ Files
 |hip2loc-sql.awk	|hip2loc awk script - creates input sql from data file
 |hipxloc.schema		|hipxloc schema file (mySQL), see hipxloc below
 |hipxloc-sql.awk	|hipxloc awk script - creates input sql from data file
+|bmkloc.schema		|bmkloc schema file (mySQL), see hipxloc below
+|bmkloc-sql.awk		|bmkloc awk script - creates input sql from data file
 
 External Files
 --------------
@@ -32,6 +34,8 @@ External Files
 |hip2loc-input.sql	|hip2loc input sql - contains data from q_hip2_gal.tsv
 |q_hipx_gal.tsv		|VizieR query on V/137D/XHIP
 |hipxloc-input.sql	|hipxloc input sql - contains data from q_hipx_gal.tsv
+|q_bmk_gal.tsv		|VizieR query on B/mk/mktypes
+|bmkoc-input.sql	|bmkloc input sql - contains data from q_bmk_gal.tsv
 
 hip1loc
 -------
@@ -200,3 +204,45 @@ Data retrieved 3-Sep-2016, using VizieR query from catalog V/137D/XHIP.
 |Con	|char(3), default null				|Cst
 |Name	|varchar(48), default null			|Name
 |GName	|varchar(106), default null			|GrpName
+
+bmkloc
+------
+### Instructions
+To reproduce query, see beginning of q_bmk_gal.tsv for query parameters and
+go to http://vizier.u-strasbg.fr/viz-bin/VizieR
+
+* From Tulonsae:
+
+        curl -O https://tulonsae.org/stars/gloc/q_bmk_gal.tsv.gz
+        gunzip q_bmk_gal.tsv.gz
+        tail -n +49 q_bmk_gal.tsv | awk -f bmkloc-sql.awk > bmkloc-input.sql
+
+    Or
+
+        curl -O https://tulonsae.org/stars/gloc/bmkloc-input.sql.gz
+        gunzip bmkloc-input.sql.gz
+
+### Data Fields
+Data retrieved 11-Sep-2016, using VizieR query from catalog B/mk/mktypes.
+
+|Field		|Columns|Description
+|---------------|-------|-----------
+|Glon		|1-8	|galactic longitude, decimal degrees
+|Glat		|10-17	|galactic latitude, decimal degrees
+|RAJ2000	|19-27	|right ascension, epoch J2000, decimal degrees
+|DEJ2000	|29-37	|declination, epoch J2000, decimal degrees
+|Name		|38-65	|star name as published or valid Simbad name
+|n_SpType	|67	|+ if spectral type is an MK standard
+|SpType		|69-94	|spectral type - MK, HD or other
+
+### Schema
+|Column	|Data Type					|From Data Field
+|-------|-----------------------------------------------|---------------
+|ID	|unsigned mediumint, not null, primary key	|auto-generated
+|GLon	|decimal(7,4), default null			|Glon
+|GLat	|decimal(6,4), default null			|Glat
+|RA	|decimal(8,5), default null			|RAJ2000
+|DE	|decimal(7,5), default null			|DEJ2000
+|Name	|varchar(26), default null			|Name
+|MKflag	|char(1), default null				|n_SpType
+|SpType	|varchar(26), default null			|SpType
