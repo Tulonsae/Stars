@@ -9,15 +9,17 @@ the external data files or the generated input sql scripts. These are available
 on the Internet and the instructions/locations are noted within the Info.md
 file for each table.
 
-coords
-------
-This directory contains information for various coordinates tables (hip1loc,
-hip2loc, hipxloc). See its Info.md file for details.
+gloc
+----
+This directory contains information for various galactic coordinates tables
+(hip1loc, hip2loc, hipxloc). When available, spectral type and other catalog IDs
+are included in the table. See its Info.md file for further details.
 
 idmaps
 ------
-This directory contains information for various ID mapping tables (hipTOhd,
-hipxids). See its Info.md file for details.
+This directory contains information for various ID mapping tables (hipTOhd).
+See its Info.md file for details. Note that other tables (esp, the gloc tables)
+often contain IDs from various catalogs.
 
 bsc5dat
 -------

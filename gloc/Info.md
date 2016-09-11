@@ -1,12 +1,13 @@
-Info on Coordinate Tables
-=========================
+Info on Galactic Coordinate Tables
+==================================
 
 Description
 -----------
-This file describes various coordinate tables. Each table contains the galactic
-longitude/latitude, J2000 RA/DE and (if available) parallax of the stars in the
-specified catalog. In many/most cases, these are calculated. Whenever possible,
-calculations are from a VizieR query.
+This file describes various galactic coordinate tables. Each table contains the
+galactic longitude/latitude, right ascension/declination and other primary
+information (if available) such as parallax, spectral type, and other catalog
+ids. Note that the galactic coordinates and right ascension/declination are
+epoch J2000 and calculated (by VizieR).
 
 Files
 -----
@@ -46,7 +47,7 @@ go to http://vizier.u-strasbg.fr/viz-bin/VizieR
 
     Or
 
-        curl -O https://tulonsae.org/stars/coords/hip1loc-input.sql.gz
+        curl -O https://tulonsae.org/stars/gloc/hip1loc-input.sql.gz
         gunzip hip1loc-input.sql.gz
 
 ### Data Fields
@@ -97,7 +98,7 @@ go to http://vizier.u-strasbg.fr/viz-bin/VizieR
 
     Or
 
-        curl -O https://tulonsae.org/stars/coords/hip2loc-input.sql.gz
+        curl -O https://tulonsae.org/stars/gloc/hip2loc-input.sql.gz
         gunzip hip2loc-input.sql.gz
 
 ### Data Fields
@@ -141,7 +142,7 @@ go to http://vizier.u-strasbg.fr/viz-bin/VizieR
 
     Or
 
-        curl -O https://tulonsae.org/stars/coords/hipxloc-input.sql.gz
+        curl -O https://tulonsae.org/stars/gloc/hipxloc-input.sql.gz
         gunzip hipxloc-input.sql.gz
 
 ### Data Fields

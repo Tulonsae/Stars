@@ -1,9 +1,0 @@
-CREATE TABLE `hipxids` (
-  `HIP` mediumint unsigned NOT NULL,
-  `GLon` decimal(7,4) NOT NULL,
-  `GLat` decimal(6,4) NOT NULL,
-  `Con` varchar(3) NOT NULL,
-  `SpType` varchar(26) DEFAULT NULL,
-  `HD` mediumint unsigned DEFAULT NULL,
-  PRIMARY KEY (`HIP`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
