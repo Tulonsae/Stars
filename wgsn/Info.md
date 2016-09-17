@@ -8,7 +8,8 @@ the International Astronomical Union (IAU) organized the Working Group on Star
 Names (WGSN), consisting of an international group of astronomers, to catalog
 and standardize proper names for stars for the international astronomical
 community. Please see their Terms of Reference webpage (see Other Links below,
-under Source) for more info. As of August 21, 2016, the list contains 186 stars.
+under Source) for more info. As of September 15, 2016, the list contains 219
+stars.
 
 Files
 -----
@@ -42,7 +43,7 @@ Source
 * From: IAU Catalog of Star Names (IAU-CSN), IAU Division C Working Group on
 Star Names (WGSN)
 * Location: http://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt
-* Date Retrieved: 26-Aug-2016
+* Date Retrieved: 15-Sep-2016
 * Files Retrieved: IAU-CSN.txt
 * Other Links:
     * The WGN webpage on the IAU site:
